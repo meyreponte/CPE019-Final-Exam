@@ -10,7 +10,7 @@ Original file is located at
 from google.colab import drive
 drive.mount('/content/drive')
 
-pip install split-folders
+!pip install split-folders
 
 import splitfolders
 import tensorflow as tf
