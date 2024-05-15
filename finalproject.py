@@ -39,6 +39,11 @@ example_images = {
     'Textile Trash': 'RealWaste/Textile Trash/Textile Trash_1.jpg',
     'Vegetation': 'RealWaste/Vegetation/Vegetation_1.jpg'
 }
+# Displaying example images for each category
+st.write("## Example Images by Category")
+for label, path in example_images.items():
+    image = Image.open(path)
+    st.image(image, caption=f'Example of {label}', use_column_width=True)
 
 # App main interface
 st.header("Waste Classification")
@@ -65,8 +70,3 @@ if uploaded_file is not None:
     st.write(f"Prediction: {predicted_class}")
     st.write(f"Confidence: {confidence:.2f}%")
 
-# Displaying example images for each category
-st.write("## Example Images by Category")
-for label, path in example_images.items():
-    image = Image.open(path)
-    st.image(image, caption=f'Example of {label}', use_column_width=True)
