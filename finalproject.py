@@ -6,7 +6,7 @@ import numpy as np
 # Load the trained model
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = tf.keras.models.load_model('waste_classifier_model.h5')
+    model = tf.keras.models.load_model('best_model65.77.keras')
     return model
 
 # Define the class names
