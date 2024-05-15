@@ -73,4 +73,4 @@ if uploaded_file is not None:
 st.write("## Example Images by Category")
 for label, path in example_images.items():
     image = Image.open(path)
-    st.image(RealWaste, caption=f'Example of {label}', use_column_width=True)
+    st.image(image, caption=f'Example of {label}', use_column_width=True)
