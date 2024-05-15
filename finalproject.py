@@ -40,6 +40,9 @@ example_images = {
     'Vegetation': 'RealWaste/Vegetation/Vegetation_1.jpg'
 }
 
+model = load_model()
+
+
 # Streamlit app
 st.title("Waste Classification")
 st.write("Upload an image to classify the type of waste.")
