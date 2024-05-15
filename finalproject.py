@@ -39,6 +39,3 @@ if uploaded_file is not None:
 
     st.write(f"Prediction: {predicted_class}")
     st.write(f"Confidence: {confidence:.2f}")
-
-# To run the app, use the following command:
-# streamlit run streamlit_app.py
