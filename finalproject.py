@@ -27,22 +27,10 @@ def load_model():
 # Define the class names
 class_names = ['Cardboard', 'Food Organics', 'Glass', 'Metal', 'Miscellaneous Trash', 'Paper', 'Plastic', 'Textile Trash', 'Vegetation']
 
-# Example images
-example_images = {
-    'Cardboard': 'RealWaste/Cardboard/Cardboard_1.jpg',
-    'Food Organics': 'RealWaste/Food Organics/Food Organics_1.jpg',
-    'Glass': 'RealWaste/Glass/Glass_1.jpg',
-    'Metal': 'RealWaste/Metal/Metal_1.jpg',
-    'Miscellaneous Trash': 'RealWaste/Miscellaneous Trash/Miscellaneous Trash_1.jpg',
-    'Paper': 'RealWaste/Paper/Paper_1.jpg',
-    'Plastic': 'RealWaste/Plastic/Plastic_1.jpg',
-    'Textile Trash': 'RealWaste/Textile Trash/Textile Trash_1.jpg',
-    'Vegetation': 'RealWaste/Vegetation/Vegetation_1.jpg'
-}
-
-# App main interface
-st.header("Waste Classification")
+# Streamlit app
+st.title("Waste Classification")
 st.write("Upload an image to classify the type of waste.")
+
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 def import_and_predict(image_data, model):
@@ -54,20 +42,15 @@ def import_and_predict(image_data, model):
     prediction = model.predict(img)
     return prediction
 
-#model = load_model()
-
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image', use_column_width=True)
+    st.write("")
     st.write("Classifying...")
+
     prediction = import_and_predict(image, model)
     predicted_class = class_names[np.argmax(prediction)]
     confidence = np.max(prediction)
-    
-    st.write(f"Prediction: {predicted_class}")
-    st.write(f"Confidence: {confidence:.2f}%")
 
-    # Display example image for the predicted class
-    example_image_path = example_images[predicted_class]
-    example_image = Image.open(example_image_path)
-    st.image(example_image, caption=f'Example of {predicted_class}', use_column_width=True)
+    st.write(f"Prediction: {predicted_class}")
+    st.write(f"Confidence: {confidence:.2f}")"
