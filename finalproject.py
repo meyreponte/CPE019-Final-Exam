@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
+import os
 
 # Set page config
 st.set_page_config(page_title="Emerging Technology 2 in CpE", layout="wide")
@@ -24,9 +25,6 @@ def load_model():
     model = tf.keras.models.load_model('best_model65.77.keras')
     return model
 
-# Define the class names
-class_names = ['Cardboard', 'Food Organics', 'Glass', 'Metal', 'Miscellaneous Trash', 'Paper', 'Plastic', 'Textile Trash', 'Vegetation']
-
 # Example images
 example_images = {
     'Cardboard': 'RealWaste/Cardboard/Cardboard_1.jpg',
@@ -39,11 +37,19 @@ example_images = {
     'Textile Trash': 'RealWaste/Textile Trash/Textile Trash_1.jpg',
     'Vegetation': 'RealWaste/Vegetation/Vegetation_1.jpg'
 }
+
 # Displaying example images for each category
 st.write("## Example Images by Category")
 for label, path in example_images.items():
-    image = Image.open(path)
-    st.image(image, caption=f'Example of {label}', use_column_width=True)
+    # Check if the file exists before trying to open
+    if os.path.exists(path):
+        try:
+            image = Image.open(path)
+            st.image(image, caption=f'Example of {label}', use_column_width=True)
+        except Exception as e:
+            st.error(f"An error occurred when opening {label} image: {e}")
+    else:
+        st.error(f"Image not found: {path} - Check the file path for {label}")
 
 # App main interface
 st.header("Waste Classification")
