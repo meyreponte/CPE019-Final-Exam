@@ -27,17 +27,17 @@ def load_model():
 # Define the class names
 class_names = ['Cardboard', 'Food Organics', 'Glass', 'Metal', 'Miscellaneous Trash', 'Paper', 'Plastic', 'Textile Trash', 'Vegetation']
 
-# Example images for each class (dummy paths)
+# Example images
 example_images = {
-    'Cardboard': 'images/cardboard.jpg',
-    'Food Organics': 'images/food_organics.jpg',
-    'Glass': 'images/glass.jpg',
-    'Metal': 'images/metal.jpg',
-    'Miscellaneous Trash': 'images/misc_trash.jpg',
-    'Paper': 'images/paper.jpg',
-    'Plastic': 'images/plastic.jpg',
-    'Textile Trash': 'images/textile_trash.jpg',
-    'Vegetation': 'images/vegetation.jpg'
+    'Cardboard': 'RealWaste/Cardboard/Cardboard_1.jpg',
+    'Food Organics': 'RealWastes/Food Organics/Food Organics_1.jpg',
+    'Glass': 'RealWaste/Glass/Glass_1.jpg',
+    'Metal': 'RealWaste/Metal/Metal_1.jpg',
+    'Miscellaneous Trash': 'RealWaste/Miscellaneous Trash/Miscellaneous Trash_1.jpg',
+    'Paper': 'RealWaste/Paper/Paper_1.jpg',
+    'Plastic': 'RealWaste/Plastic/Plastic_1.jpg',
+    'Textile Trash': 'RealWaste/Textile Trash/Textile Trash_1.jpg',
+    'Vegetation': 'RealWaste/Vegetation/Vegetation_1.jpg'
 }
 
 # App main interface
