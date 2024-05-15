@@ -1,4 +1,7 @@
-split-folders
-tensorflow
-matplotlib
+pandas
 streamlit
+numpy
+tensorflow
+googledrivedownloader
+opencv-python-headless
+pillow
