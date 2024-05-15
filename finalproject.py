@@ -53,10 +53,6 @@ def import_and_predict(image_data, model):
     img = img / 255.0
     prediction = model.predict(img)
     return prediction
-    
-def load_model():
-    model = load_model()
-    return model
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
