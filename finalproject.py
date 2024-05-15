@@ -73,3 +73,9 @@ if uploaded_file is not None:
     example_image_path = example_images[predicted_class]
     example_image = Image.open(example_image_path)
     st.image(example_image, caption=f'Example of {predicted_class}', use_column_width=True)
+
+# Displaying example images for each category
+st.write("## Example Images by Category")
+for label, path in example_images.items():
+    image = Image.open(path)
+    st.image(image, caption=f'Example of {label}', use_column_width=True)
