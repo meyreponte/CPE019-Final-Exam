@@ -67,3 +67,9 @@ if uploaded_file is not None:
 
     st.write(f"Prediction: {predicted_class}")
     st.write(f"Confidence: {confidence:.2f}")
+
+# Displaying example images for each category
+st.write("## Example Images by Category")
+for label, path in example_images.items():
+    image = Image.open(path)
+    st.image(image, caption=f'Example of {label}', use_column_width=True)
