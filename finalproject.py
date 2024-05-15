@@ -30,7 +30,7 @@ class_names = ['Cardboard', 'Food Organics', 'Glass', 'Metal', 'Miscellaneous Tr
 # Example images
 example_images = {
     'Cardboard': 'RealWaste/Cardboard/Cardboard_1.jpg',
-    'Food Organics': 'RealWastes/Food Organics/Food Organics_1.jpg',
+    'Food Organics': 'RealWaste/Food Organics/Food Organics_1.jpg',
     'Glass': 'RealWaste/Glass/Glass_1.jpg',
     'Metal': 'RealWaste/Metal/Metal_1.jpg',
     'Miscellaneous Trash': 'RealWaste/Miscellaneous Trash/Miscellaneous Trash_1.jpg',
