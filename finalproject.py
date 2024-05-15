@@ -2,12 +2,11 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
-import os
 
 # Set page config
 st.set_page_config(page_title="Emerging Technology 2 in CpE", layout="wide")
 
-# details
+# Title and student details
 st.title("Emerging Technology 2 in CpE")
 st.markdown("""
 **Name:**
@@ -25,35 +24,25 @@ def load_model():
     model = tf.keras.models.load_model('best_model65.77.keras')
     return model
 
-# Example images
-example_images = {
-    'Cardboard': 'RealWaste/Cardboard/Cardboard_1.jpg',
-    'Food Organics': 'RealWaste/Food Organics/Food Organics_1.jpg',
-    'Glass': 'RealWaste/Glass/Glass_1.jpg',
-    'Metal': 'RealWaste/Metal/Metal_1.jpg',
-    'Miscellaneous Trash': 'RealWaste/Miscellaneous Trash/Miscellaneous Trash_1.jpg',
-    'Paper': 'RealWaste/Paper/Paper_1.jpg',
-    'Plastic': 'RealWaste/Plastic/Plastic_1.jpg',
-    'Textile Trash': 'RealWaste/Textile Trash/Textile Trash_1.jpg',
-    'Vegetation': 'RealWaste/Vegetation/Vegetation_1.jpg'
-}
+# Define the class names
+class_names = ['Cardboard', 'Food Organics', 'Glass', 'Metal', 'Miscellaneous Trash', 'Paper', 'Plastic', 'Textile Trash', 'Vegetation']
 
-# Displaying example images for each category
-st.write("## Example Images by Category")
-for label, path in example_images.items():
-    # Check if the file exists before trying to open
-    if os.path.exists(path):
-        try:
-            image = Image.open(path)
-            st.image(image, caption=f'Example of {label}', use_column_width=True)
-        except Exception as e:
-            st.error(f"An error occurred when opening {label} image: {e}")
-    else:
-        st.error(f"Image not found: {path} - Check the file path for {label}")
+# Example images for each class (update the paths according to your directory structure)
+example_images = {
+    'Cardboard': 'images/cardboard.jpg',
+    'Food Organics': 'images/food_organics.jpg',
+    'Glass': 'images/glass.jpg',
+    'Metal': 'images/metal.jpg',
+    'Miscellaneous Trash': 'images/misc_trash.jpg',
+    'Paper': 'images/paper.jpg',
+    'Plastic': 'images/plastic.jpg',
+    'Textile Trash': 'images/textile_trash.jpg',
+    'Vegetation': 'images/vegetation.jpg'
+}
 
 # App main interface
 st.header("Waste Classification")
-st.write("Upload an image to classify the type of waste.")
+st.write("Upload an image to classify the type of waste, and see example images for each category.")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 def import_and_predict(image_data, model):
@@ -64,6 +53,8 @@ def import_and_predict(image_data, model):
     img = img / 255.0
     prediction = model.predict(img)
     return prediction
+
+#model = load_model()
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
@@ -76,3 +67,13 @@ if uploaded_file is not None:
     st.write(f"Prediction: {predicted_class}")
     st.write(f"Confidence: {confidence:.2f}%")
 
+    # Display example image for the predicted class
+    example_image_path = example_images[predicted_class]
+    example_image = Image.open(example_image_path)
+    st.image(example_image, caption=f'Example of {predicted_class}', use_column_width=True)
+
+# Displaying example images for each category
+st.write("## Example Images by Category")
+for label, path in example_images.items():
+    image = Image.open(path)
+    st.image(image, caption=f'Example of {label}', use_column_width=True)
