@@ -3,21 +3,6 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-# Set page config
-st.set_page_config(page_title="Emerging Technology 2 in CpE", layout="wide")
-
-# Title and student details
-st.title("Emerging Technology 2 in CpE")
-st.markdown("""
-**Name:**
-- Mark Janssen Valencia
-- Meyrazol Reponte
-
-**Course/Section:** CPE019/CPE32S5
-
-**Date Submitted:** May 17, 2024
-""")
-
 # Load the trained model
 @st.cache(allow_output_mutation=True)
 def load_model():
